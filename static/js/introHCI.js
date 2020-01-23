@@ -15,4 +15,23 @@ function initializePage() {
 
 	// Add any additional listeners here
 	// example: $("#div-id").click(functionToCall);
+	$('.project').click(projectClick);
+
+	$('#testjs').click(function(e) {
+		$('.jumbotron h1').text("Javascript has taken control");
+		$('.jumbotron p').toggleClass('active');
+	});
+}
+
+function projectClick(e) {
+	console.log('Project clicked');
+	e.preventDefault();
+
+	var containingProject = $(this).closest(".project");
+    var description = $(containingProject).find(".project-description");
+    if (description.length == 0) {
+       $(containingProject).append("<div class='project-description'><p>Description of the project.</p></div>");
+    } else {
+       $(description).fadeToggle();
+    }
 }
